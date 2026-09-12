@@ -117,7 +117,7 @@ docker run --rm -p 8080:80 kryptckr-site
 
 Le site est alors accessible sur `http://localhost:8080`.
 
-Le Dockerfile utilise actuellement `npm install` car aucun lockfile n'est encore versionné. L'objectif est de versionner prochainement `package-lock.json`, puis de revenir à `npm ci` pour des installations strictement reproductibles.
+Le Dockerfile utilise `npm ci` avec le lockfile versionné afin de garantir des installations reproductibles.
 
 ## ⚙️ CI/CD
 
@@ -133,8 +133,11 @@ GitHub Actions
         │
         ├── Checkout
         ├── Setup Node 22
-        ├── npm install
+        ├── npm ci
+        ├── Lint
+        ├── Tests contenu
         └── npm run build
+        └── Build image Docker
 ```
 
 Cible de la chaîne de delivery :
@@ -207,14 +210,17 @@ Thèmes prévus :
 - [x] Ajouter un vrai routing
 - [x] Créer About / Labs / Projects / Blog / Contact
 - [x] Créer les pages détaillées des projets
-- [ ] Ajouter les articles Markdown
-- [ ] Ajouter SEO et métadonnées
-- [ ] Ajouter favicon / identité graphique Kryptckr
-- [ ] Améliorer les animations et interactions
+- [x] Ajouter les articles Markdown
+- [x] Ajouter SEO et métadonnées
+- [x] Ajouter favicon / identité graphique Kryptckr
+- [x] Améliorer les animations et interactions
+- [x] Ajouter une page Now / Status
 
 ### Phase 3 — DevOps
 
 - [ ] Ajouter Docker Compose
+- [x] Rendre l'installation reproductible avec `package-lock.json` et `npm ci`
+- [x] Ajouter lint, tests de contenu et build Docker dans la CI
 - [ ] Publier l'image dans un registry
 - [ ] Déployer le site sur un environnement de lab
 - [ ] Ajouter HTTPS automatisé
