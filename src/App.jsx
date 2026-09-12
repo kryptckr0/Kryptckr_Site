@@ -5,16 +5,11 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Labs from './pages/Labs'
 import Projects from './pages/Projects'
+import ProjectDetail from './pages/ProjectDetail'
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
 
-const links = [
-  ['About', '/about'],
-  ['Labs', '/labs'],
-  ['Projects', '/projects'],
-  ['Blog', '/blog'],
-  ['Contact', '/contact'],
-]
+const links = [['About', '/about'], ['Labs', '/labs'], ['Projects', '/projects'], ['Blog', '/blog'], ['Contact', '/contact']]
 
 function Layout() {
   const [open, setOpen] = useState(false)
@@ -31,6 +26,7 @@ function Layout() {
       <Route path="/about" element={<About/>}/>
       <Route path="/labs" element={<Labs/>}/>
       <Route path="/projects" element={<Projects/>}/>
+      <Route path="/projects/:slug" element={<ProjectDetail/>}/>
       <Route path="/blog" element={<Blog/>}/>
       <Route path="/contact" element={<Contact/>}/>
       <Route path="*" element={<Home/>}/>
