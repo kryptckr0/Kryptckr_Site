@@ -147,6 +147,8 @@ Registry :
 ghcr.io/kryptckr0/kryptckr-site:latest
 ```
 
+L'image est publiée pour les architectures `linux/amd64` et `linux/arm64`.
+
 Pour la télécharger :
 
 ```bash
