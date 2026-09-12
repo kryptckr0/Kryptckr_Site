@@ -1,4 +1,5 @@
 import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export default function ProjectCard({ project, index }) {
   return <article className="project">
@@ -7,6 +8,6 @@ export default function ProjectCard({ project, index }) {
     <p>{project.text}</p>
     <div className="stack">{project.stack.map(item => <span key={item}>{item}</span>)}</div>
     <div className="project-line" />
-    <button className="project-link">Explore project <ArrowUpRight size={16} /></button>
+    <Link className="project-link" to={`/projects/${project.slug}`}>Explore project <ArrowUpRight size={16} /></Link>
   </article>
 }
