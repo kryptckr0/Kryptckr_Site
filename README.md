@@ -140,6 +140,19 @@ Le site est alors accessible sur `http://localhost:8080`.
 
 Le Dockerfile utilise `npm ci` avec le lockfile versionné afin de garantir des installations reproductibles.
 
+Après une fusion dans `main`, la CI publie automatiquement l'image dans GitHub Container
+Registry :
+
+```text
+ghcr.io/kryptckr0/kryptckr-site:latest
+```
+
+Pour la télécharger :
+
+```bash
+docker pull ghcr.io/kryptckr0/kryptckr-site:latest
+```
+
 ## ⚙️ CI/CD
 
 Le workflow GitHub Actions situé dans `.github/workflows/ci.yml` s'exécute sur les push et pull requests vers `main`.
@@ -159,6 +172,7 @@ GitHub Actions
         ├── Tests contenu
         └── npm run build
         └── Build image Docker
+        └── Publication GHCR (main uniquement)
 ```
 
 Cible de la chaîne de delivery :
