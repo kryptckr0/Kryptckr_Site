@@ -85,7 +85,7 @@ Le site utilise maintenant un routing client avec des pages dédiées. Les proje
 ```bash
 git clone https://github.com/kryptckr0/Kryptckr_Site.git
 cd Kryptckr_Site
-npm install
+npm ci
 ```
 
 ### Développement
@@ -157,7 +157,8 @@ docker pull ghcr.io/kryptckr0/kryptckr-site:latest
 
 ## ⚙️ CI/CD
 
-Le workflow GitHub Actions situé dans `.github/workflows/ci.yml` s'exécute sur les push et pull requests vers `main`.
+Le workflow GitHub Actions situé dans `.github/workflows/ci.yml` s'exécute sur chaque
+push de branche et sur les pull requests vers `main`.
 
 Pipeline actuel :
 
@@ -197,9 +198,44 @@ Registry
    ▼
 Déploiement
    │
-   ▼
-Kubernetes / K3s
+   ├── VPS + Docker Compose (prochaine étape)
+   └── Kubernetes / K3s (évolution prévue)
 ```
+
+### État actuel
+
+- **Release GitHub** : `v0.3.0`
+- **CI** : lint, tests, build Vite et build Docker validés sur `main`
+- **Registry** : image publiée sur GHCR
+- **Architectures** : `linux/amd64` et `linux/arm64`
+- **Déploiement public** : à réaliser sur un VPS
+
+### Déploiement VPS prévu
+
+Le VPS sera la prochaine cible de déploiement. Il devra disposer d'une IP publique et
+des ports `80` et `443` accessibles. La procédure prévue est :
+
+```text
+VPS Ubuntu
+   ↓
+Docker + Docker Compose
+   ↓
+Image GHCR
+   ↓
+Reverse proxy HTTPS
+   ↓
+Domaine Kryptckr
+```
+
+Une fois le VPS prêt, le déploiement utilisera l'image publiée :
+
+```bash
+docker pull ghcr.io/kryptckr0/kryptckr-site:latest
+docker compose pull
+docker compose up -d
+```
+
+Le domaine, le reverse proxy et HTTPS ne sont pas encore configurés.
 
 ## 🔬 Labs
 
@@ -255,10 +291,12 @@ Thèmes prévus :
 
 ### Phase 3 — DevOps
 
-- [ ] Ajouter Docker Compose
+- [x] Ajouter Docker Compose
 - [x] Rendre l'installation reproductible avec `package-lock.json` et `npm ci`
 - [x] Ajouter lint, tests de contenu et build Docker dans la CI
-- [ ] Publier l'image dans un registry
+- [x] Publier l'image dans GitHub Container Registry
+- [x] Publier une image multi-architecture (`amd64` / `arm64`)
+- [x] Créer la release GitHub `v0.3.0`
 - [ ] Déployer le site sur un environnement de lab
 - [ ] Ajouter HTTPS automatisé
 - [ ] Ajouter monitoring et logs
