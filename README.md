@@ -22,6 +22,7 @@ L'objectif n'est pas simplement de présenter des compétences : le site sert lu
 | Frontend | React + Vite |
 | UI | CSS custom + Lucide React |
 | Langage | JavaScript / JSX |
+| Routing | React Router |
 | Containerisation | Docker |
 | Web server | Nginx |
 | CI | GitHub Actions |
@@ -31,16 +32,21 @@ L'objectif n'est pas simplement de présenter des compétences : le site sert lu
 
 ```text
 Kryptckr_Site/
-├── .github/
-│   └── workflows/
-│       └── ci.yml
+├── .github/workflows/ci.yml
 ├── src/
 │   ├── components/
 │   │   ├── ProjectCard.jsx
 │   │   ├── SectionLabel.jsx
 │   │   └── SkillCard.jsx
-│   ├── data/
-│   │   └── site.js
+│   ├── data/site.js
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── About.jsx
+│   │   ├── Labs.jsx
+│   │   ├── Projects.jsx
+│   │   ├── ProjectDetail.jsx
+│   │   ├── Blog.jsx
+│   │   └── Contact.jsx
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css
@@ -52,7 +58,19 @@ Kryptckr_Site/
 └── README.md
 ```
 
-L'architecture évoluera vers une organisation par pages, composants réutilisables et contenu technique indépendant du code de présentation.
+Le site utilise maintenant un routing client avec des pages dédiées. Les projets disposent également de routes de détail réutilisables.
+
+## 🧭 Routes
+
+| Route | Rôle |
+|---|---|
+| `/` | Accueil / présentation |
+| `/about` | Profil et approche |
+| `/labs` | Laboratoire technique |
+| `/projects` | Liste des projets |
+| `/projects/:slug` | Détail d'un projet |
+| `/blog` | Notes et articles techniques |
+| `/contact` | Canaux de contact |
 
 ## 🚀 Lancer le projet en local
 
@@ -75,8 +93,6 @@ npm install
 ```bash
 npm run dev
 ```
-
-Vite affiche ensuite l'URL locale du serveur de développement.
 
 ### Build de production
 
@@ -101,7 +117,7 @@ docker run --rm -p 8080:80 kryptckr-site
 
 Le site est alors accessible sur `http://localhost:8080`.
 
-> Le Dockerfile utilise actuellement `npm install`/`npm ci` selon l'état du lockfile. Dès qu'un `package-lock.json` sera versionné, le pipeline pourra être durci autour de `npm ci` pour obtenir des installations reproductibles.
+Le Dockerfile utilise actuellement `npm install` car aucun lockfile n'est encore versionné. L'objectif est de versionner prochainement `package-lock.json`, puis de revenir à `npm ci` pour des installations strictement reproductibles.
 
 ## ⚙️ CI/CD
 
@@ -121,7 +137,7 @@ GitHub Actions
         └── npm run build
 ```
 
-La prochaine étape est de faire évoluer ce pipeline vers une chaîne complète :
+Cible de la chaîne de delivery :
 
 ```text
 Git push
@@ -145,7 +161,7 @@ Déploiement
 Kubernetes / K3s
 ```
 
-## 🔬 Labs prévus
+## 🔬 Labs
 
 Le site documentera progressivement plusieurs environnements et expérimentations :
 
@@ -162,7 +178,9 @@ Le site documentera progressivement plusieurs environnements et expérimentation
 
 ## 📚 Blog technique
 
-Le blog aura pour vocation de documenter les problèmes rencontrés et les solutions mises en œuvre, avec une approche orientée terrain :
+Le blog documentera les problèmes rencontrés et les solutions mises en œuvre, avec une approche orientée terrain : commandes, architectures, erreurs, diagnostics et enseignements.
+
+Thèmes prévus :
 
 - Kubernetes & cloud-native
 - Linux & infrastructure
@@ -173,13 +191,11 @@ Le blog aura pour vocation de documenter les problèmes rencontrés et les solut
 - Cybersécurité
 - Retours d'expérimentation
 
-Chaque article devra privilégier les commandes, architectures, erreurs rencontrées et enseignements plutôt qu'un simple contenu théorique.
-
 ## 🧭 Roadmap
 
 ### Phase 1 — Foundation
 
-- [x] Initialiser le projet React / Vite
+- [x] Initialiser React / Vite
 - [x] Créer l'identité visuelle Kryptckr
 - [x] Structurer les données du site
 - [x] Ajouter les sections principales
@@ -188,9 +204,9 @@ Chaque article devra privilégier les commandes, architectures, erreurs rencontr
 
 ### Phase 2 — Site engineering
 
-- [ ] Ajouter un vrai routing
-- [ ] Créer les pages About / Labs / Projects / Blog / Contact
-- [ ] Créer les pages détaillées des projets
+- [x] Ajouter un vrai routing
+- [x] Créer About / Labs / Projects / Blog / Contact
+- [x] Créer les pages détaillées des projets
 - [ ] Ajouter les articles Markdown
 - [ ] Ajouter SEO et métadonnées
 - [ ] Ajouter favicon / identité graphique Kryptckr
@@ -242,7 +258,7 @@ Un système intéressant n'est pas seulement un système qui fonctionne. C'est u
 
 **Projet actif — construction en cours.**
 
-Le dépôt évolue progressivement avec l'apprentissage, les labs et les expérimentations. Certaines briques de la roadmap sont volontairement laissées ouvertes afin que le site reflète la progression réelle du projet.
+Le dépôt évolue progressivement avec l'apprentissage, les labs et les expérimentations. Certaines briques de la roadmap restent volontairement ouvertes afin que le site reflète la progression réelle du projet.
 
 ## 🔗 Repository
 
