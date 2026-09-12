@@ -106,6 +106,27 @@ npm run build
 npm run preview
 ```
 
+### Docker Compose
+
+Pour construire et lancer le site avec Docker Compose :
+
+```bash
+docker compose up --build
+```
+
+Le site est alors accessible sur `http://localhost:8080`. Pour utiliser un autre port
+si `8080` est déjà occupé :
+
+```bash
+SITE_PORT=8081 docker compose up --build
+```
+
+Arrêter les conteneurs :
+
+```bash
+docker compose down
+```
+
 ## 🐳 Docker
 
 Le projet peut être construit comme une image de production servie par Nginx :
@@ -118,6 +139,19 @@ docker run --rm -p 8080:80 kryptckr-site
 Le site est alors accessible sur `http://localhost:8080`.
 
 Le Dockerfile utilise `npm ci` avec le lockfile versionné afin de garantir des installations reproductibles.
+
+Après une fusion dans `main`, la CI publie automatiquement l'image dans GitHub Container
+Registry :
+
+```text
+ghcr.io/kryptckr0/kryptckr-site:latest
+```
+
+Pour la télécharger :
+
+```bash
+docker pull ghcr.io/kryptckr0/kryptckr-site:latest
+```
 
 ## ⚙️ CI/CD
 
@@ -138,6 +172,7 @@ GitHub Actions
         ├── Tests contenu
         └── npm run build
         └── Build image Docker
+        └── Publication GHCR (main uniquement)
 ```
 
 Cible de la chaîne de delivery :
