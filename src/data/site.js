@@ -14,7 +14,7 @@ export const skills = [
 ]
 
 export const projects = [
-  { slug: 'k3s-homelab', tag: 'KUBERNETES', title: 'K3s homelab', text: 'A compact cloud-native lab with Traefik, Helm, cert-manager and observability.', stack: ['K3s', 'Traefik', 'Helm'] },
-  { slug: 'monitoring-stack', tag: 'OBSERVABILITY', title: 'Monitoring stack', text: 'Prometheus, Grafana and Loki assembled into a practical monitoring platform.', stack: ['Prometheus', 'Grafana', 'Loki'] },
-  { slug: 'ci-cd-pipeline', tag: 'AUTOMATION', title: 'CI/CD pipeline', text: 'From Git push to container build and deployment: automate the boring parts.', stack: ['Git', 'Docker', 'CI/CD'] },
+  { slug: 'k3s-homelab', tag: 'KUBERNETES', title: 'K3s homelab', text: 'A compact cloud-native lab with Traefik, Helm, cert-manager and observability.', stack: ['K3s', 'Traefik', 'Helm'], image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=82' },
+  { slug: 'monitoring-stack', tag: 'OBSERVABILITY', title: 'Monitoring stack', text: 'Prometheus, Grafana and Loki assembled into a practical monitoring platform.', stack: ['Prometheus', 'Grafana', 'Loki'], image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=82' },
+  { slug: 'ci-cd-pipeline', tag: 'AUTOMATION', title: 'CI/CD pipeline', text: 'From Git push to container build and deployment: automate the boring parts.', stack: ['Git', 'Docker', 'CI/CD'], image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1200&q=82' },
 ]

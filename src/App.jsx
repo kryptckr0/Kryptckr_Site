@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
-import { Github, Menu, X } from 'lucide-react'
+import { BrowserRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
+import { GitBranch, Menu, X } from 'lucide-react'
 import Home from './pages/Home'
 import About from './pages/About'
 import Labs from './pages/Labs'
@@ -13,15 +13,16 @@ const links = [['About', '/about'], ['Labs', '/labs'], ['Projects', '/projects']
 
 function Layout() {
   const [open, setOpen] = useState(false)
+  const location = useLocation()
   return <div className="site">
     <div className="grid-bg" />
-    <header className="nav">
+    <header className={open ? 'nav nav-open' : 'nav'}>
       <Link className="brand" to="/" onClick={() => setOpen(false)}>KRYPT<span>CKR</span></Link>
-      <button className="menu-btn" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X/> : <Menu/>}</button>
-      <nav className={open ? 'nav-links open' : 'nav-links'}>{links.map(([label, path]) => <Link key={path} to={path} onClick={() => setOpen(false)}>{label}</Link>)}</nav>
-      <a className="github" href="https://github.com/kryptckr0" target="_blank" rel="noreferrer"><Github size={17}/> GitHub</a>
+      <button className="menu-btn" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? 'Close menu' : 'Open menu'}>{open ? <X/> : <Menu/>}</button>
+      <nav className={open ? 'nav-links open' : 'nav-links'} aria-label="Main navigation">{links.map(([label, path]) => <NavLink key={path} className={({ isActive }) => isActive ? 'active' : undefined} to={path} end={path === '/'} onClick={() => setOpen(false)}>{label}</NavLink>)}</nav>
+      <a className="github" href="https://github.com/kryptckr0" target="_blank" rel="noreferrer"><GitBranch size={17}/> GitHub</a>
     </header>
-    <main><Routes>
+    <main className="page-transition" key={location.pathname}><Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/about" element={<About/>}/>
       <Route path="/labs" element={<Labs/>}/>
