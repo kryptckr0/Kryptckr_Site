@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
-import { GitBranch, Menu, Moon, Sun, X } from 'lucide-react'
+import { ArrowUp, GitBranch, Menu, Moon, Sun, X } from 'lucide-react'
 import Home from './pages/Home'
 import About from './pages/About'
 import Labs from './pages/Labs'
@@ -26,6 +26,8 @@ const pageTitles = {
 function Layout() {
   const [open, setOpen] = useState(false)
   const [theme, setTheme] = useState('dark')
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [showTop, setShowTop] = useState(false)
   const location = useLocation()
   useEffect(() => {
     const saved = localStorage.getItem('kryptckr-theme')
@@ -39,8 +41,19 @@ function Layout() {
   useEffect(() => {
     document.title = pageTitles[location.pathname] || (location.pathname.startsWith('/projects/') ? 'Project detail — Kryptckr' : location.pathname.startsWith('/blog/') ? 'Field Note — Kryptckr' : 'Kryptckr')
   }, [location.pathname])
+  useEffect(() => {
+    const updateScrollState = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight
+      setScrollProgress(scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0)
+      setShowTop(window.scrollY > 500)
+    }
+    updateScrollState()
+    window.addEventListener('scroll', updateScrollState, { passive: true })
+    return () => window.removeEventListener('scroll', updateScrollState)
+  }, [location.pathname])
   return <div className={`site ${theme === 'light' ? 'light' : ''}`}>
     <div className="grid-bg" />
+    <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} aria-hidden="true" />
     <header className={open ? 'nav nav-open' : 'nav'}>
       <Link className="brand" to="/" onClick={() => setOpen(false)}><i className="tricolor-mark" aria-hidden="true"/>KRYPT<span>CKR</span></Link>
       <button className="menu-btn" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? 'Close menu' : 'Open menu'}>{open ? <X/> : <Menu/>}</button>
@@ -63,6 +76,7 @@ function Layout() {
       <Route path="/now" element={<Now/>}/>
       <Route path="*" element={<Home/>}/>
     </Routes></main>
+    {showTop && <button className="back-to-top" type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Revenir en haut de la page" title="Revenir en haut"><ArrowUp size={17}/></button>}
     <footer><span>© 2026 KRYPTCKR</span><span>BUILT WITH REACT + VITE</span><span>NO MATRIX. JUST SYSTEMS.</span></footer>
   </div>
 }
