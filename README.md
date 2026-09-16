@@ -1,10 +1,24 @@
-# KRYPTCKR
+# KRYPTCKR — Technical Lab
 
 > **BUILD. BREAK. SECURE. AUTOMATE.**
 
 Kryptckr est mon portfolio technique et mon laboratoire public autour de l'infrastructure, du DevOps, du cloud, de l'observabilité et de la cybersécurité.
 
 L'objectif n'est pas simplement de présenter des compétences : le site sert lui-même de terrain d'expérimentation. Code, conteneurisation, CI/CD, déploiement et documentation font partie du projet.
+
+> **Les systèmes complexes. Rendus clairs.**
+
+Le nom **Fori**, qui signifie « boss » ou « grand » en soussou, représente l'ambition du projet : construire des systèmes solides, compréhensibles et utiles, avec une approche de terrain.
+
+## ✨ Expérience actuelle
+
+- Hero panoramique avec slogan, CTA et indicateurs d'état
+- Navigation corporate responsive avec thème sombre et thème clair
+- Mode **Liquid Glass** en thème clair, mémorisé dans le navigateur
+- Menu flottant **Quick Access** pour le thème, GitHub et le retour en haut
+- Barre de progression de lecture et transitions douces entre les pages
+- Terminal animé **FORI / LIVE SYSTEMS** avec état opérationnel et accès direct aux Labs
+- Pages About, Labs, Projects, Blog, Now et Contact avec routes dédiées
 
 ## 🎯 Objectifs
 
@@ -36,6 +50,7 @@ Kryptckr_Site/
 ├── src/
 │   ├── components/
 │   │   ├── ProjectCard.jsx
+│   │   ├── LiveTerminal.jsx
 │   │   ├── SectionLabel.jsx
 │   │   └── SkillCard.jsx
 │   ├── data/site.js
@@ -46,6 +61,8 @@ Kryptckr_Site/
 │   │   ├── Projects.jsx
 │   │   ├── ProjectDetail.jsx
 │   │   ├── Blog.jsx
+│   │   ├── BlogPost.jsx
+│   │   ├── Now.jsx
 │   │   └── Contact.jsx
 │   ├── App.jsx
 │   ├── main.jsx
@@ -70,6 +87,8 @@ Le site utilise maintenant un routing client avec des pages dédiées. Les proje
 | `/projects` | Liste des projets |
 | `/projects/:slug` | Détail d'un projet |
 | `/blog` | Notes et articles techniques |
+| `/blog/:slug` | Lecture d'une note technique |
+| `/now` | État actuel et priorités |
 | `/contact` | Canaux de contact |
 
 ## 🚀 Lancer le projet en local
@@ -139,6 +158,20 @@ docker run --rm -p 8080:80 kryptckr-site
 Le site est alors accessible sur `http://localhost:8080`.
 
 Le Dockerfile utilise `npm ci` avec le lockfile versionné afin de garantir des installations reproductibles.
+
+### Image locale utilisée actuellement
+
+```bash
+docker build -t kryptckr-site:local .
+docker rm -f kryptckr-site 2>/dev/null || true
+docker run -d \
+  --name kryptckr-site \
+  --restart unless-stopped \
+  -p 8080:80 \
+  kryptckr-site:local
+```
+
+Ouvrir ensuite [http://localhost:8080](http://localhost:8080).
 
 Après une fusion dans `main`, la CI publie automatiquement l'image dans GitHub Container
 Registry :
@@ -288,6 +321,9 @@ Thèmes prévus :
 - [x] Ajouter favicon / identité graphique Kryptckr
 - [x] Améliorer les animations et interactions
 - [x] Ajouter une page Now / Status
+- [x] Ajouter un mode clair/sombre persistant
+- [x] Ajouter une navigation flottante et une barre de progression
+- [x] Ajouter un hero panoramique et un terminal live FORI
 
 ### Phase 3 — DevOps
 
@@ -301,6 +337,14 @@ Thèmes prévus :
 - [ ] Ajouter HTTPS automatisé
 - [ ] Ajouter monitoring et logs
 - [ ] Ajouter une stratégie de déploiement automatisée
+
+### Prochaine session — Sécurité
+
+- [ ] Vérifier les dépendances et automatiser leur audit
+- [ ] Ajouter un scan de l'image Docker
+- [ ] Vérifier les headers HTTP et la configuration Nginx
+- [ ] Ajouter une politique de secrets et de variables d'environnement
+- [ ] Documenter le modèle de menace et les limites du lab
 
 ### Phase 4 — Production
 
