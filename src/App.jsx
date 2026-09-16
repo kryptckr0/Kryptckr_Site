@@ -64,6 +64,14 @@ function Layout() {
       </button>
       <a className="github" href="https://github.com/kryptckr0" target="_blank" rel="noreferrer"><GitBranch size={17}/> GitHub</a>
     </header>
+    <aside className="floating-menu" aria-label="Actions rapides">
+      <span className="floating-menu-label">QUICK ACCESS</span>
+      <button type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={`Activer le mode ${theme === 'dark' ? 'clair' : 'sombre'}`} title={`Mode ${theme === 'dark' ? 'clair' : 'sombre'}`}>
+        {theme === 'dark' ? <Sun size={17}/> : <Moon size={17}/>}
+      </button>
+      <a href="https://github.com/kryptckr0" target="_blank" rel="noreferrer" aria-label="Ouvrir GitHub" title="GitHub"><GitBranch size={17}/></a>
+      {showTop && <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Revenir en haut" title="Revenir en haut"><ArrowUp size={17}/></button>}
+    </aside>
     <main className="page-transition" key={location.pathname}><Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/about" element={<About/>}/>
@@ -76,7 +84,6 @@ function Layout() {
       <Route path="/now" element={<Now/>}/>
       <Route path="*" element={<Home/>}/>
     </Routes></main>
-    {showTop && <button className="back-to-top" type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Revenir en haut de la page" title="Revenir en haut"><ArrowUp size={17}/></button>}
     <footer><span>© 2026 KRYPTCKR</span><span>BUILT WITH REACT + VITE</span><span>NO MATRIX. JUST SYSTEMS.</span></footer>
   </div>
 }
