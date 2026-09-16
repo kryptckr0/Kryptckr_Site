@@ -32,7 +32,7 @@ function Layout() {
   return <div className="site">
     <div className="grid-bg" />
     <header className={open ? 'nav nav-open' : 'nav'}>
-      <Link className="brand" to="/" onClick={() => setOpen(false)}>KRYPT<span>CKR</span></Link>
+      <Link className="brand" to="/" onClick={() => setOpen(false)}><i className="tricolor-mark" aria-hidden="true"/>KRYPT<span>CKR</span></Link>
       <button className="menu-btn" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? 'Close menu' : 'Open menu'}>{open ? <X/> : <Menu/>}</button>
       <nav className={open ? 'nav-links open' : 'nav-links'} aria-label="Main navigation">{links.map(([label, path]) => <NavLink key={path} className={({ isActive }) => isActive ? 'active' : undefined} to={path} end={path === '/'} onClick={() => setOpen(false)}>{label}</NavLink>)}</nav>
       <a className="github" href="https://github.com/kryptckr0" target="_blank" rel="noreferrer"><GitBranch size={17}/> GitHub</a>

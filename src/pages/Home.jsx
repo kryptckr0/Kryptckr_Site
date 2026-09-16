@@ -8,7 +8,7 @@ export default function Home() {
   return <>
     <section className="hero section">
       <div className="hero-copy">
-        <div className="eyebrow"><span className="pulse"/> TECHNICAL LAB / 2026</div>
+        <div className="eyebrow"><span className="pulse"/> TECHNICAL LAB / FR-2026</div>
         <h1>BUILD.<br/><em>BREAK.</em> SECURE.<br/><strong>AUTOMATE.</strong></h1>
         <p className="lead">Infrastructure · DevOps · Cloud · Cybersecurity</p>
         <p className="intro">Je construis, je teste et je casse des systèmes pour mieux comprendre comment les rendre fiables, observables et automatisables.</p>
