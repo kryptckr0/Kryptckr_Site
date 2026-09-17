@@ -14,7 +14,7 @@ const posts = Object.values(modules).map(source => {
 export default function Blog() {
   return <section className="page section">
     <SectionLabel>BLOG / 04</SectionLabel>
-    <div className="page-header"><p className="kicker">FIELD NOTES</p><h1>Learn.<br/><span>Document.</span></h1><p>Des notes techniques issues du lab : problèmes rencontrés, commandes, architectures, erreurs et enseignements.</p></div>
+    <div className="page-header"><p className="kicker">FIELD NOTES</p><h1>Learn.<br/><span>Document.</span></h1><p>Des notes techniques issues du lab : problèmes rencontrés, commandes, architectures, erreurs et enseignements.</p><a className="rss-link" href="/feed.xml">S'abonner au flux RSS →</a></div>
     <div className="post-list">{posts.map(post => <Link className="post" to={`/blog/${post.slug}`} key={post.slug}><div><span>{post.tag}</span><small>{post.date}</small></div><h3>{post.title}</h3><p>{post.excerpt}</p><span className="post-read">Read field note ↗</span></Link>)}</div>
   </section>
 }

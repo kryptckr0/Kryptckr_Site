@@ -20,6 +20,7 @@ Le nom **Fori**, qui signifie « boss » ou « grand » en soussou, représente 
 - Terminal animé **FORI / LIVE SYSTEMS** avec état opérationnel et accès direct aux Labs
 - Pages About, Labs, Projects, Blog, Now et Contact avec routes dédiées
 - Trust Center `/security` avec posture sécurité, état des services et chaîne de livraison
+- Flux RSS natif `/feed.xml` généré automatiquement depuis les Field Notes
 
 ## 🎯 Objectifs
 
@@ -92,6 +93,8 @@ Le site utilise maintenant un routing client avec des pages dédiées. Les proje
 | `/now` | État actuel et priorités |
 | `/security` | Security & Reliability / Trust Center |
 | `/contact` | Canaux de contact |
+
+Le flux RSS public est disponible à l'adresse [https://kryptckr.fr/feed.xml](https://kryptckr.fr/feed.xml). Il est généré pendant le build à partir des métadonnées des articles Markdown. L'agrégation de sources IT externes viendra plus tard, après la mise en place du lab et du déploiement.
 
 ## 🚀 Lancer le projet en local
 
@@ -324,6 +327,7 @@ Thèmes prévus :
 - [x] Améliorer les animations et interactions
 - [x] Ajouter une page Now / Status
 - [x] Ajouter le Trust Center Security & Reliability
+- [x] Publier un flux RSS natif pour les articles
 - [x] Ajouter un mode clair/sombre persistant
 - [x] Ajouter une navigation flottante et une barre de progression
 - [x] Ajouter un hero panoramique et un terminal live FORI
