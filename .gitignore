@@ -1,6 +1,6 @@
 # Dependencies
 node_modules/
-public/feed.xml/
+public/feed.xml
 
 # Build output
 dist/
