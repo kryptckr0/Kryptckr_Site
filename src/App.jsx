@@ -10,8 +10,9 @@ import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import Contact from './pages/Contact'
 import Now from './pages/Now'
+import Security from './pages/Security'
 
-const links = [['About', '/about'], ['Labs', '/labs'], ['Projects', '/projects'], ['Blog', '/blog'], ['Now', '/now'], ['Contact', '/contact']]
+const links = [['About', '/about'], ['Labs', '/labs'], ['Projects', '/projects'], ['Security', '/security'], ['Blog', '/blog'], ['Now', '/now'], ['Contact', '/contact']]
 
 const pageTitles = {
   '/': 'Kryptckr — Build. Break. Secure. Automate.',
@@ -20,6 +21,7 @@ const pageTitles = {
   '/projects': 'Projects — Kryptckr',
   '/blog': 'Field Notes — Kryptckr',
   '/now': 'Now / Status — Kryptckr',
+  '/security': 'Security & Reliability — Kryptckr',
   '/contact': 'Contact — Kryptckr',
 }
 
@@ -82,6 +84,7 @@ function Layout() {
       <Route path="/blog/:slug" element={<BlogPost/>}/>
       <Route path="/contact" element={<Contact/>}/>
       <Route path="/now" element={<Now/>}/>
+      <Route path="/security" element={<Security/>}/>
       <Route path="*" element={<Home/>}/>
     </Routes></main>
     <footer><span>© 2026 KRYPTCKR</span><span>BUILT WITH REACT + VITE</span><span>NO MATRIX. JUST SYSTEMS.</span></footer>

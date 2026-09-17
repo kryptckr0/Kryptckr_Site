@@ -19,6 +19,7 @@ Le nom **Fori**, qui signifie « boss » ou « grand » en soussou, représente 
 - Barre de progression de lecture et transitions douces entre les pages
 - Terminal animé **FORI / LIVE SYSTEMS** avec état opérationnel et accès direct aux Labs
 - Pages About, Labs, Projects, Blog, Now et Contact avec routes dédiées
+- Trust Center `/security` avec posture sécurité, état des services et chaîne de livraison
 
 ## 🎯 Objectifs
 
@@ -89,6 +90,7 @@ Le site utilise maintenant un routing client avec des pages dédiées. Les proje
 | `/blog` | Notes et articles techniques |
 | `/blog/:slug` | Lecture d'une note technique |
 | `/now` | État actuel et priorités |
+| `/security` | Security & Reliability / Trust Center |
 | `/contact` | Canaux de contact |
 
 ## 🚀 Lancer le projet en local
@@ -321,6 +323,7 @@ Thèmes prévus :
 - [x] Ajouter favicon / identité graphique Kryptckr
 - [x] Améliorer les animations et interactions
 - [x] Ajouter une page Now / Status
+- [x] Ajouter le Trust Center Security & Reliability
 - [x] Ajouter un mode clair/sombre persistant
 - [x] Ajouter une navigation flottante et une barre de progression
 - [x] Ajouter un hero panoramique et un terminal live FORI
