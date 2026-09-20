@@ -246,7 +246,7 @@ Déploiement
 - **CI** : lint, tests, build Vite et build Docker validés sur `main`
 - **Registry** : image publiée sur GHCR
 - **Architectures** : `linux/amd64` et `linux/arm64`
-- **Déploiement public** : à réaliser sur un VPS
+- **Déploiement VPS** : pipeline préparé, intégration avec `kryptckr-platform` en cours
 
 ### Déploiement VPS prévu
 
@@ -340,9 +340,10 @@ Thèmes prévus :
 - [x] Publier l'image dans GitHub Container Registry
 - [x] Publier une image multi-architecture (`amd64` / `arm64`)
 - [x] Créer la release GitHub `v0.3.0`
-- [ ] Déployer le site sur un environnement de lab
-- [ ] Ajouter HTTPS automatisé
-- [ ] Ajouter monitoring et logs
+- [x] Préparer le déploiement du site sur le VPS via GHCR + Docker Compose
+- [ ] Valider le déploiement automatique sur le VPS
+- [ ] Ajouter Traefik / HTTPS automatisé
+- [ ] Ajouter monitoring et logs via la stack Kryptckr Platform
 - [ ] Ajouter une stratégie de déploiement automatisée
 
 ### Prochaine session — Sécurité
