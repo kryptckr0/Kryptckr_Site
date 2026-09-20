@@ -59,3 +59,23 @@ jobs:
           tags: |
             ${{ env.IMAGE_NAME }}:latest
             ${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+  deploy:
+    name: Deploy to VPS
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: publish
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+      - name: Deploy site container
+        uses: appleboy/ssh-action@v1.2.1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd /opt/docker/kryptckr-platform
+            docker compose pull site
+            docker compose up -d site
+            docker compose ps site
